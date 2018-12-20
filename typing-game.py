@@ -1,8 +1,10 @@
 import argparse
 import csv
 import msvcrt 
-from colorama import init, Fore
-init(autoreset=True)
+#from colorama import init, Fore
+import subprocess
+#init(autoreset=True)
+subprocess.call('', shell=True)
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--input", required=True, help="path to vocab txt file")
@@ -24,10 +26,14 @@ with open(args['input'], mode='r', encoding="UTF-8", errors='ignore') as csv_fil
         hiragana.append(word[1])
         meaning.append(word[2])
 
+
 for i in range(START, START+LENGTH):
-    output = Fore.GREEN+hiragana[i] + ' ' + kanji[i] + ' ' + meaning[i]
-    
-    print(output, end='\r')
+    output = hiragana[i] + ' ' + kanji[i] + ' ' + meaning[i]
+    print('                                                                           ', end='\r')
+    print(output)
+    print('                                                                           ', end='\r')
     #print(Fore.GREEN, end='')
     input()
+    print('\033[3F')
+
     #a = msvcrt.getch()
